@@ -61,5 +61,8 @@ typings/
 .idea/
 .vscode/
 
-# Build Directory
-dist/
+# Source Directory
+src/
+
+# Build configuration
+tsconfig.json
