@@ -4,6 +4,7 @@
   "description": "Core library for creating Liquid State Integrated Web Apps (IWAs)",
   "main": "index.js",
   "scripts": {
+    "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/liquid-state/iwa-core/issues"
   },
-  "homepage": "https://github.com/liquid-state/iwa-core#readme"
+  "homepage": "https://github.com/liquid-state/iwa-core#readme",
+  "devDependencies": {
+    "typescript": "^2.7.1"
+  }
 }
