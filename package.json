@@ -1,0 +1,19 @@
+{
+  "name": "iwa-core",
+  "version": "0.1.0",
+  "description": "Core library for creating Liquid State Integrated Web Apps (IWAs)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liquid-state/iwa-core.git"
+  },
+  "author": "Liquid State <dev@liquid-state.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/liquid-state/iwa-core/issues"
+  },
+  "homepage": "https://github.com/liquid-state/iwa-core#readme"
+}
