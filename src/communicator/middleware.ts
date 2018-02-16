@@ -40,6 +40,6 @@ export default function middlewareRunner<T, R>(
         resolve(message);
       }
     };
-    run();
+    run(message);
   });
 }
