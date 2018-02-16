@@ -1,7 +1,7 @@
 import * as Communicator from './communicator';
 import DefinitionStore, { Definition, DefinitionParser, IDefinition } from './definition';
 
-export { Communicator, DefinitionStore, Definition as WebappDefinition };
+export { Communicator, DefinitionStore, Definition as WebappDefinition, IDefinition };
 
 /**
  * Create a default app configuration
