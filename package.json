@@ -4,7 +4,7 @@
   "description": "Core library for creating Liquid State Integrated Web Apps (IWAs)",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "rollup -c",
     "format": "prettier --parser typescript --single-quote --trailing-comma es5 --print-width 99 --write \"./src/**/*.ts\"",
     "test": "jest"
   },
@@ -21,6 +21,8 @@
   "devDependencies": {
     "jest": "^22.3.0",
     "prettier": "^1.10.2",
+    "rollup": "^0.56.0",
+    "rollup-plugin-typescript2": "^0.11.1",
     "ts-jest": "^22.0.4",
     "typescript": "^2.7.1"
   },
