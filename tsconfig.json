@@ -7,9 +7,9 @@
         "outDir": "./dist",
         "strictNullChecks": true,
         "noImplicitAny": true,
-        "sourceMap": true
+        "sourceMap": true,
     },
     "include": [
         "src/**/*"
-    ]
+    ],
 }
