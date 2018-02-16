@@ -2,7 +2,10 @@
   "name": "iwa-core",
   "version": "0.1.0",
   "description": "Core library for creating Liquid State Integrated Web Apps (IWAs)",
-  "main": "index.js",
+  "files": [
+    "dist/"
+  ],
+  "main": "dist/index.js",
   "scripts": {
     "build": "rollup -c",
     "format": "prettier --parser typescript --single-quote --trailing-comma es5 --print-width 99 --write \"./src/**/*.ts\"",
