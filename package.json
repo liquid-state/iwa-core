@@ -8,7 +8,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "rollup -c",
+    "build": "tsc",
     "format": "prettier --parser typescript --single-quote --trailing-comma es5 --print-width 99 --write \"./src/**/*.ts\"",
     "test": "jest"
   },
@@ -22,13 +22,14 @@
     "url": "https://github.com/liquid-state/iwa-core/issues"
   },
   "homepage": "https://github.com/liquid-state/iwa-core#readme",
+  "dependencies": {
+    "lodash": "^4.17.5"
+  },
   "devDependencies": {
     "@types/jest": "^22.1.2",
     "@types/lodash": "^4.14.103",
     "jest": "^22.3.0",
     "prettier": "^1.10.2",
-    "rollup": "^0.56.0",
-    "rollup-plugin-typescript2": "^0.11.1",
     "ts-jest": "^22.0.4",
     "typescript": "^2.7.1"
   },
@@ -45,8 +46,5 @@
     "roots": [
       "<rootDir>/src"
     ]
-  },
-  "dependencies": {
-    "lodash": "^4.17.5"
   }
 }
