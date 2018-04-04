@@ -1,19 +1,9 @@
-import App from './app';
-import * as Communicator from './communicator';
-import DefinitionStore, { Definition, DefinitionParser } from './definition';
+import createApp from './app';
 
-export { Communicator, DefinitionStore, Definition as WebappDefinition };
+export { default as createApp, App } from './app';
 
-/**
- * Create a default app configuration
- */
-export default function createApp(
-  definition: string,
-  communicatorImplementation?: Communicator.ICommunicatorImpl
-) {
-  const impl = communicatorImplementation
-    ? communicatorImplementation
-    : Communicator.createUrlCommunicator();
+export { Communicator, createNoopCommunicator, createUrlCommunicator } from './communicator';
 
-  return new App(new Communicator.Communicator(impl), new DefinitionParser().parse(definition));
-}
+export { default as DefinitionStore, Definition, DefinitionParser } from './definition';
+
+export default createApp;
