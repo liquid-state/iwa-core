@@ -1,7 +1,8 @@
+import App from './app';
 import * as Communicator from './communicator';
-import DefinitionStore, { Definition, DefinitionParser, IDefinition } from './definition';
+import DefinitionStore, { Definition, DefinitionParser } from './definition';
 
-export { Communicator, DefinitionStore, Definition as WebappDefinition, IDefinition };
+export { Communicator, DefinitionStore, Definition as WebappDefinition };
 
 /**
  * Create a default app configuration
@@ -14,8 +15,5 @@ export default function createApp(
     ? communicatorImplementation
     : Communicator.createUrlCommunicator();
 
-  return {
-    communicator: new Communicator.Communicator(impl),
-    definition: new DefinitionParser().parse(definition),
-  };
+  return new App(new Communicator.Communicator(impl), new DefinitionParser().parse(definition));
 }
