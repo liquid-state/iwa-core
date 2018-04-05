@@ -6,4 +6,6 @@ export { Communicator, createNoopCommunicator, createUrlCommunicator } from './c
 
 export { default as DefinitionStore, Definition, DefinitionParser } from './definition';
 
+export { default as Messages } from './messages';
+
 export default createApp;
