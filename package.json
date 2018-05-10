@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/liquid-state/iwa-core#readme",
   "dependencies": {
-    "lodash": "^4.17.5"
+    "lodash-es": "^4.17.5"
   },
   "devDependencies": {
     "@types/jest": "^22.1.2",
