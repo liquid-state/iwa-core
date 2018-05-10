@@ -7,7 +7,7 @@ export interface PluginPrototype<T> {
 }
 
 export interface Plugin<T> {
-  key: string,
+  key: string;
   use(app: IApp): T;
 }
 
