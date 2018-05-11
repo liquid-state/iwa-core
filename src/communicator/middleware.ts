@@ -1,6 +1,6 @@
 export type MiddlewareT<T, R> = (
   dispatch: (response: R) => void
-) => (message: T, next: (message: T) => void) => void;
+) => (next: (message: T) => void, done: () => void) => (message: T) => void;
 
 /**
  * A middleware runner for the communicator
@@ -24,6 +24,7 @@ export default function middlewareRunner<T, R>(
   //Take a copy of the middleware array so we don't mutate it.
   middleware = [...middleware];
   return new Promise((resolve, reject) => {
+    let done = () => resolve();
     let run = (updatedMessage?: T) => {
       if (updatedMessage) {
         // Support message mutation.
@@ -34,7 +35,7 @@ export default function middlewareRunner<T, R>(
       }
       let nextMiddleware = middleware.shift();
       if (nextMiddleware) {
-        nextMiddleware(dispatch)(message, run);
+        nextMiddleware(dispatch)(run, done)(message);
       } else {
         // We are done, resolve with the last version of message we have seen.
         resolve(message);

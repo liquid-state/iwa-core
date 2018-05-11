@@ -126,9 +126,9 @@ export default class NativeAppCommunicator implements INativeCommunicator {
       let result = await this.runSendingMiddleware(message);
       this.impl.send(result.domain, result.eventType, result.data);
     } catch {
-      // Message is cancelled.
-      return;
+      // Message has been handled by middleware.
     }
+    return p;
   }
 
   private runSendingMiddleware(message: WrappedSendingMessage) {
