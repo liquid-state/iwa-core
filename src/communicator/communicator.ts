@@ -42,8 +42,8 @@ export type MessageReceivedCallback = (purpose: string, data: object) => void;
 export interface INativeCommunicator {
   send: (message: SendingMessage) => Promise<any>;
   messageReceived: SimpleEvent<ReceivedMessage>;
-  addOnSendMiddleware: (middleware: MiddlewareT<WrappedSendingMessage, any>) => void;
-  addOnReceiveMiddleware: (middleware: MiddlewareT<ReceivedMessage, any>) => void;
+  addOnSendMiddleware?: (middleware: MiddlewareT<WrappedSendingMessage, any>) => void;
+  addOnReceiveMiddleware?: (middleware: MiddlewareT<ReceivedMessage, any>) => void;
 }
 
 export default class NativeAppCommunicator implements INativeCommunicator {

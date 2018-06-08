@@ -1,5 +1,6 @@
 import { IDefinition } from '../definition';
 import { ICommunicator } from '../communicator';
+import getConfiguration from '../configuration';
 
 export interface PluginPrototype<T> {
   key: string;
@@ -16,12 +17,15 @@ export interface IApp {
   definition: IDefinition;
   plugin(plugin: Plugin<any>): this;
   use<T>(plugin: PluginPrototype<T>): T;
+  configuration(...keys: string[]): Promise<{[key: string]: any}>
 }
 
 export default class App implements IApp {
   private plugins = new Map<string, Plugin<any>>();
 
   constructor(public communicator: ICommunicator, public definition: IDefinition) {}
+
+  configuration = getConfiguration(this.communicator);
 
   plugin(plugin: Plugin<any>): this {
     this.plugins.set(plugin.key, plugin);
