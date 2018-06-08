@@ -10,7 +10,8 @@
   "scripts": {
     "build": "tsc",
     "format": "prettier --parser typescript --single-quote --trailing-comma es5 --print-width 99 --write \"./src/**/*.ts\"",
-    "test": "jest"
+    "test": "jest",
+    "prepack": "tsc"
   },
   "repository": {
     "type": "git",
