@@ -1,8 +1,9 @@
 import App from './app';
 import { ICommunicatorImpl, createUrlCommunicator, Communicator } from '../communicator';
 import { DefinitionParser } from '../definition';
-import { IALSProvider } from '../als/als';
+import ALSProvider, { IALSProvider } from '../als/als';
 import ALS from '../als';
+import { DataFactory } from '../als/data';
 
 /**
  * Create a default app configuration
@@ -13,10 +14,15 @@ export default function createApp(
   alsProvider?: IALSProvider
 ) {
   const impl = communicatorImpl ? communicatorImpl : createUrlCommunicator();
+  const app = new App(
+    new Communicator(impl),
+    new DefinitionParser().parse(definition),
+    new ALSProvider(new DataFactory())
+  );
   if (!alsProvider) {
-    alsProvider = ALS.default(() => app);
+    alsProvider = ALS.default(app);
   }
-  const app = new App(new Communicator(impl), new DefinitionParser().parse(definition), alsProvider);
+  app.alsProvider = alsProvider;
   return app;
 }
 

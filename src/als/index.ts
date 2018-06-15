@@ -3,10 +3,10 @@ import { default as ALSProvider, ALSData } from './als';
 import { default as DataFactory } from './data';
 import { default as configurationProvider } from './configurationProvider';
 
-const defaultAls = (getApp: () => IApp) => (
+const defaultAls = (app: IApp) => (
   new ALSProvider(
     new DataFactory<ALSData>()
-      .withProvider(configurationProvider(getApp()))
+      .withProvider(configurationProvider(app))
     )
 );
 
