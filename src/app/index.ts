@@ -17,6 +17,7 @@ export default function createApp(
     alsProvider = ALS.default(() => app);
   }
   const app = new App(new Communicator(impl), new DefinitionParser().parse(definition), alsProvider);
+  return app;
 }
 
 export { App };
