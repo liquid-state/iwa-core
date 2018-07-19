@@ -5,7 +5,7 @@ describe('Launch domain messages', () => {
     it('Sets the correct domain and event type', () => {
       const message = documentLibrary();
       expect(message.domain).toBe('launch');
-      expect(message.eventType).toBe('document-library');
+      expect(message.eventType).toBe('document_library');
       expect(message.data.category).toBeUndefined();
     });
 
