@@ -63,3 +63,5 @@ typings/
 
 # Build Directory
 dist/
+
+.DS_Store
