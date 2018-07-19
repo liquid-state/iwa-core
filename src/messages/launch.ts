@@ -1,6 +1,6 @@
 export const documentLibrary = (category?: string) => ({
-  domain: 'config',
-  eventType: 'get',
+  domain: 'launch',
+  eventType: 'document-library',
   data: {
     category,
   },
