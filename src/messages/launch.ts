@@ -5,3 +5,12 @@ export const documentLibrary = (category?: string) => ({
     category,
   },
 });
+
+export const document = (documentId: string, pageSlug?: string) => ({
+  domain: 'launch',
+  eventType: 'document',
+  data: {
+    product_id: documentId,
+    page_slug: pageSlug
+  },
+});
