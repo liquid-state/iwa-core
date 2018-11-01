@@ -1,4 +1,4 @@
-import { documentLibrary, document } from './launch';
+import { documentLibrary, document, browser } from './launch';
 
 describe('Launch domain messages', () => {
   describe('Document Library', () => {
@@ -27,6 +27,26 @@ describe('Launch domain messages', () => {
       const message = document('com.example.my-product', 'my-page-slug');
       expect(message.data.product_id).toBe('com.example.my-product');
       expect(message.data.page_slug).toBe('my-page-slug');
+    });
+  });
+
+  describe('Browser', () => {
+    it('Sets the correct domain and event type', () => {
+      const message = browser('https://example.com');
+      expect(message.domain).toBe('launch');
+      expect(message.eventType).toBe('iab');
+      expect(message.data.url).toBe('https://example.com');
+    });
+
+    it('Sets external false by default', () => {
+      const message = browser('https://example.com');
+      expect(message.data.settings.external).toBeFalsy();
+    });
+
+    it('Sets external true when set', () => {
+      const message = browser('https://example.com', true);
+      expect(message.data.settings.external).toBeDefined();
+      expect(message.data.settings.external).toBeTruthy();
     });
   });
 });
