@@ -1,29 +1,29 @@
 import DataFactory from './data';
 
 export type IALSProvider = {
-  result(): Promise<IALS>,
-}
+  result(): Promise<IALS>;
+};
 
 export type IALS = {
-  getUrl(service: string, url: string): string
-}
+  getUrl(service: string, url: string): string;
+};
 
 export type ALSData = {
   services: {
     [key: string]: {
-      [key: string]: string
-    }
-  }
-}
+      [key: string]: string;
+    };
+  };
+};
 
 export class ALS implements IALS {
-  constructor(private data: ALSData) { };
+  constructor(private data: ALSData) {}
 
   getUrl(service: string, url: string): string {
     try {
-      return this.data.services[service][url]
+      return this.data.services[service][url];
     } catch (e) {
-      throw `Unknown als entry ${service} ${url}`
+      throw `Unknown als entry ${service} ${url}`;
     }
   }
 }
@@ -40,7 +40,7 @@ real ALS afterwards. This also allows the UIS to switch between authenticated an
 ALS as appropriate at the time the als is needed.
 */
 export default class ALSProvider implements IALSProvider {
-  constructor(private dataProvider: DataFactory<ALSData>) { }
+  constructor(private dataProvider: DataFactory<ALSData>) {}
 
   async result(): Promise<IALS> {
     // We get this freshly everytime the als is requested so that if

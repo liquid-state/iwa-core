@@ -11,6 +11,6 @@ export const document = (documentId: string, pageSlug?: string) => ({
   eventType: 'document',
   data: {
     product_id: documentId,
-    page_slug: pageSlug
+    page_slug: pageSlug,
   },
 });

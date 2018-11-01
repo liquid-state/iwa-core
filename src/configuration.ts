@@ -2,7 +2,6 @@ import { pick, filter, mapValues } from 'lodash';
 import { get } from './messages/config';
 import { ICommunicator } from './communicator';
 
-
 /* A utility function for retrieving configuration from the native app
   Configuration settings should not change during runtime so we can cache them indefinitely.
 */
@@ -18,5 +17,5 @@ export default (communicator: ICommunicator) => {
     }
     // Only return the keys requested.
     return pick(CACHE, keys);
-  }
-}
+  };
+};

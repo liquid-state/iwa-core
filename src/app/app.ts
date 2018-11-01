@@ -16,10 +16,10 @@ export interface Plugin<T> {
 export interface IApp {
   communicator: ICommunicator;
   definition: IDefinition;
-  alsProvider: IALSProvider,
+  alsProvider: IALSProvider;
   plugin(plugin: Plugin<any>): this;
   use<T>(plugin: PluginPrototype<T>): T;
-  configuration(...keys: string[]): Promise<{ [key: string]: any }>
+  configuration(...keys: string[]): Promise<{ [key: string]: any }>;
 }
 
 export default class App implements IApp {
@@ -29,7 +29,7 @@ export default class App implements IApp {
     public communicator: ICommunicator,
     public definition: IDefinition,
     public alsProvider: IALSProvider
-  ) { }
+  ) {}
 
   public configuration = getConfiguration(this.communicator);
 

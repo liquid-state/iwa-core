@@ -4,16 +4,15 @@ This module contains a generic system for retrieving application data using plug
 export type IProvider<T> = (next: () => Promise<T>) => Promise<T>;
 
 export interface IDataFactory<T> {
-  withProvider: (provider: IProvider<T>) => this,
-  result: () => Promise<T>
+  withProvider: (provider: IProvider<T>) => this;
+  result: () => Promise<T>;
 }
 
 /* Utility type used to trigger and handle invalidation of cached objects. */
 export interface Invalidator {
-  onInvalidation: (callback: () => void) => void,
-  invalidate: () => void
+  onInvalidation: (callback: () => void) => void;
+  invalidate: () => void;
 }
-
 
 /*
 Provider which access data from localstorage
@@ -26,7 +25,7 @@ export const localStorageProvider = <T>(key: string): IProvider<T> => async next
   } catch (e) {
     return next();
   }
-}
+};
 
 /*
 Provider which accesses data from a specific dom element
@@ -37,13 +36,12 @@ So that the browser innerHTML property returns the unparsed json text.
 export const domProvider = <T>(id: string): IProvider<T> => async next => {
   let elem = document.getElementById(id);
   return elem ? JSON.parse(elem.innerHTML) : next();
-}
+};
 
 /*
 Provides data from a static object
 */
 export const staticProvider = <T>(data: any): IProvider<T> => async _ => data;
-
 
 /*
 Provider which handles caching of other data returned from other providers.
@@ -54,7 +52,7 @@ export const cacheProvider = <T>(cacheTime = 600, invalidator?: Invalidator): IP
   let expires: number | null = null;
 
   if (invalidator) {
-    invalidator.onInvalidation(() => data = null);
+    invalidator.onInvalidation(() => (data = null));
   }
 
   return async next => {
@@ -62,11 +60,10 @@ export const cacheProvider = <T>(cacheTime = 600, invalidator?: Invalidator): IP
       return data;
     }
     data = await next();
-    expires = Date.now() + (cacheTime * 1000);
+    expires = Date.now() + cacheTime * 1000;
     return data;
-  }
-}
-
+  };
+};
 
 /*
 Factory for using providers
@@ -96,7 +93,7 @@ export class DataFactory<T> implements IDataFactory<T> {
         return Promise.reject('Cannot load config.');
       }
       return prov(next);
-    }
+    };
     return next();
   }
 }

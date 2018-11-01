@@ -2,18 +2,18 @@ import configuration from './configuration';
 import SimpleEvent from './utils/simpleEvent';
 
 const communicator = () => ({
-  send: jest.fn().mockImplementation((message) => {
+  send: jest.fn().mockImplementation(message => {
     if (message.data.keys.includes('VALID')) {
       return {
-        'VALID': { value: 'value' }
-      }
+        VALID: { value: 'value' },
+      };
     } else if (message.data.keys.includes('SECOND')) {
       return {
-        'SECOND': { value: 'second' }
-      }
+        SECOND: { value: 'second' },
+      };
     }
   }),
-  messageReceived: new SimpleEvent<any>()
+  messageReceived: new SimpleEvent<any>(),
 });
 
 describe('The configuration function', () => {
