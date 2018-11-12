@@ -29,16 +29,16 @@ export default class App implements IApp {
     public communicator: ICommunicator,
     public definition: IDefinition,
     public alsProvider: IALSProvider
-  ) {}
+  ) { }
 
   public configuration = getConfiguration(this.communicator);
 
-  plugin(plugin: Plugin<any>): this {
+  public plugin = (plugin: Plugin<any>): this => {
     this.plugins.set(plugin.key, plugin);
     return this;
   }
 
-  use<T>(plugin: PluginPrototype<T>): T {
+  public use = <T>(plugin: PluginPrototype<T>): T => {
     const result = this.plugins.get(plugin.key);
     if (!result) {
       // Typically trying to access a plugin which is not defined will be a fatal error

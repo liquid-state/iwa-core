@@ -68,21 +68,21 @@ export default class NativeAppCommunicator implements INativeCommunicator {
 
   public messageReceived = new SimpleEvent<ReceivedMessage>();
 
-  send(message: SendingMessage): Promise<any> {
+  send = (message: SendingMessage): Promise<any> => {
     let wrapped = this.createDataEnvelope(message);
     return this.doSend(wrapped);
   }
 
-  addOnReceiveMiddleware(middleware: MiddlewareT<ReceivedMessage, any>) {
+  addOnReceiveMiddleware = (middleware: MiddlewareT<ReceivedMessage, any>) => {
     this.onReceiveMiddleware.push(middleware);
   }
 
-  addOnSendMiddleware(middleware: MiddlewareT<WrappedSendingMessage, any>) {
+  addOnSendMiddleware = (middleware: MiddlewareT<WrappedSendingMessage, any>) => {
     this.onSendMiddleware.push(middleware);
   }
 
-  private async processReceivedMessage(message: ReceivedMessage) {
-    console.log('Communicator received: ', message);
+  private processReceivedMessage = async (message: ReceivedMessage) => {
+    console.debug('Communicator received: ', message);
     try {
       let result = await this.runMessageReceivedMiddleware(message);
       if (result.purpose === 'response') {
@@ -96,7 +96,7 @@ export default class NativeAppCommunicator implements INativeCommunicator {
     }
   }
 
-  private handleResponse(message: ReceivedMessage) {
+  private handleResponse = (message: ReceivedMessage) => {
     let response = message as Response;
     let waiter = this.responseWaiters.get(response.request_id);
     if (waiter) {
@@ -105,7 +105,7 @@ export default class NativeAppCommunicator implements INativeCommunicator {
     }
   }
 
-  private createDataEnvelope(message: SendingMessage): WrappedSendingMessage {
+  private createDataEnvelope = (message: SendingMessage): WrappedSendingMessage => {
     return {
       domain: message.domain,
       eventType: message.eventType,
@@ -116,11 +116,11 @@ export default class NativeAppCommunicator implements INativeCommunicator {
     };
   }
 
-  private async doSend(message: WrappedSendingMessage): Promise<any> {
+  private doSend = async (message: WrappedSendingMessage): Promise<any> => {
     let { domain, eventType, data } = message;
     // Create a promise which will be resolved if this message gets a response.
     let p = new Promise(resolve => this.responseWaiters.set(message.data.request_id, resolve));
-    console.log('Communicator sending: ', domain, eventType, data);
+    console.debug('Communicator sending: ', domain, eventType, data);
     // Run all configured middleware and let them return a response.
     try {
       let result = await this.runSendingMiddleware(message);
@@ -131,12 +131,11 @@ export default class NativeAppCommunicator implements INativeCommunicator {
     return p;
   }
 
-  private runSendingMiddleware(message: WrappedSendingMessage) {
-    const callback = this.processReceivedMessage.bind(this);
-    return middlewareRunner(this.onSendMiddleware, callback, message);
+  private runSendingMiddleware = (message: WrappedSendingMessage) => {
+    return middlewareRunner(this.onSendMiddleware, this.processReceivedMessage, message);
   }
 
-  private runMessageReceivedMiddleware(message: ReceivedMessage) {
-    return middlewareRunner(this.onReceiveMiddleware, this.send.bind(this), message);
+  private runMessageReceivedMiddleware = (message: ReceivedMessage) => {
+    return middlewareRunner(this.onReceiveMiddleware, this.send, message);
   }
 }
