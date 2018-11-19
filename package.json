@@ -3,7 +3,8 @@
   "version": "1.7.0",
   "description": "Core library for creating Liquid State Integrated Web Apps (IWAs)",
   "files": [
-    "dist/"
+    "dist/",
+    "src/"
   ],
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
