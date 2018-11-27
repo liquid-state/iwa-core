@@ -19,6 +19,6 @@ export const setBackOverride = (enabled: boolean) => ({
   domain: APP_DOMAIN,
   eventType: SET_BACK_OVERRIDE,
   data: {
-    enabled,
+    is_enabled: enabled,
   },
 });

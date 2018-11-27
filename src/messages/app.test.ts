@@ -10,8 +10,8 @@ describe('App domain events', () => {
     });
 
     it('Sets enabled correctly', () => {
-      expect(setBackOverride(false).data.enabled).toBeFalsy();
-      expect(setBackOverride(true).data.enabled).toBeTruthy();
+      expect(setBackOverride(false).data.is_enabled).toBeFalsy();
+      expect(setBackOverride(true).data.is_enabled).toBeTruthy();
     });
   });
 });
