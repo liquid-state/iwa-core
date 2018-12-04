@@ -7,6 +7,14 @@ export const reset = () => ({
   data: {},
 });
 
+export const openFile = (path: string) => ({
+  domain: APP_DOMAIN,
+  eventType: 'open_file',
+  data: {
+    path,
+  }
+});
+
 export const setAuthenticationStatus = (isAuthenticated: boolean) => ({
   domain: 'app',
   eventType: 'set_authentication_status',
