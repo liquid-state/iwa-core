@@ -3,6 +3,7 @@ import * as app from './app';
 import * as launch from './launch';
 import * as iwa from './iwa';
 import * as kv from './kv';
+import * as userfiles from './userfiles';
 
 export default {
   config,
@@ -10,4 +11,5 @@ export default {
   launch,
   iwa,
   kv,
+  userfiles,
 };

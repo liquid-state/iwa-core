@@ -1,11 +1,11 @@
-export const USERFILES = 'userfiles';
+export const DOMAIN = 'userfiles';
 export const PICKFILE = 'pickfile';
 export const UPLOAD = 'upload';
 export const CACHE_LOCAL = 'cachelocal';
 export const CACHE_GET = 'cacheget';
 
 export const pickFile = (...mimeTypes: string[]) => ({
-  domain: USERFILES,
+  domain: DOMAIN,
   eventType: PICKFILE,
   data: {
     mime_types: mimeTypes,
@@ -18,7 +18,7 @@ type UploadOptions = {
 };
 
 export const upload = (localPath: string, uploadUrl: string, options?: UploadOptions) => ({
-  domain: USERFILES,
+  domain: DOMAIN,
   eventType: UPLOAD,
   data: {
     local_path: localPath,
@@ -37,7 +37,7 @@ export type CacheLocalFile = {
 };
 
 export const cacheLocal = (...files: CacheLocalFile[]) => ({
-  domain: USERFILES,
+  domain: DOMAIN,
   eventType: CACHE_LOCAL,
   data: {
     files
@@ -45,7 +45,7 @@ export const cacheLocal = (...files: CacheLocalFile[]) => ({
 });
 
 export const cacheGet = (name: CacheID, downloadUrl?: string, downloadHeaders?: object) => ({
-  domain: USERFILES,
+  domain: DOMAIN,
   eventType: CACHE_GET,
   data: {
     name,
