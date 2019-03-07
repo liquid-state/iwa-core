@@ -5,13 +5,30 @@ export const CACHE_LOCAL = 'cachelocal';
 export const CACHE_REMOTE = 'cacheremote';
 export const CACHE_GET = 'cacheget';
 
-export const pickFile = (...mimeTypes: string[]) => ({
+export type PickFileResult = {
+  domain: string,
+  eventType: string,
+  data: {
+    mime_types: string[]
+  }
+};
+
+interface PickFile {
+  (...mimeTypes: string[]): PickFileResult
+  image: () => PickFileResult,
+  audio: () => PickFileResult,
+};
+
+export const pickFile: PickFile = ((...mimeTypes: string[]) => ({
   domain: DOMAIN,
   eventType: PICKFILE,
   data: {
     mime_types: mimeTypes,
   }
-});
+})) as any;
+
+pickFile.image = () => pickFile('image/png', 'image/jpeg');
+pickFile.audio = () => pickFile('audio/mpeg', 'audio/mp3', 'audio/aac', 'audio/wav');
 
 type UploadOptions = {
   uploadMethod?: "POST" | "PUT",
