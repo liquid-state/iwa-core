@@ -2,6 +2,7 @@ export const DOMAIN = 'userfiles';
 export const PICKFILE = 'pickfile';
 export const UPLOAD = 'upload';
 export const CACHE_LOCAL = 'cachelocal';
+export const CACHE_REMOTE = 'cacheremote';
 export const CACHE_GET = 'cacheget';
 
 export const pickFile = (...mimeTypes: string[]) => ({
@@ -51,5 +52,23 @@ export const cacheGet = (name: CacheID, downloadUrl?: string, downloadHeaders?: 
     name,
     download_url: downloadUrl,
     download_headers: downloadHeaders,
+  }
+});
+
+export type CacheRemoteFile  = {
+  name: CacheID,
+  url: string,
+  headers: object | undefined
+};
+
+export const cacheRemote = (...files: CacheRemoteFile[]) => ({
+  domain: DOMAIN,
+  eventType: CACHE_REMOTE,
+  data: {
+    files: files.map(f => ({
+      name: f.name,
+      download_url: f.url,
+      download_headers: f.headers
+    }))
   }
 });
