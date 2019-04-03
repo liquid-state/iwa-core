@@ -4,7 +4,7 @@ import { DefinitionParser } from '../definition';
 import ALSProvider, { IALSProvider } from '../als/als';
 import ALS from '../als';
 import { DataFactory } from '../als/data';
-import { Setting } from './pluginHelpers';
+import { Setting, resolveSettings } from './pluginHelpers';
 /**
  * Create a default app configuration
  */
@@ -26,4 +26,4 @@ export default function createApp(
   return app;
 }
 
-export { App, Setting };
+export { App, Setting, resolveSettings };
