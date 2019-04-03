@@ -28,12 +28,12 @@
     "lodash-es": "^4.17.5"
   },
   "devDependencies": {
-    "@types/jest": "^22.1.2",
+    "@types/jest": "^24",
     "@types/lodash": "^4.14.103",
-    "jest": "^22.3.0",
+    "jest": "^24",
     "prettier": "^1.10.2",
-    "ts-jest": "^22.0.4",
-    "typescript": "^2.7.1"
+    "ts-jest": "^24",
+    "typescript": "^3"
   },
   "jest": {
     "moduleFileExtensions": [
@@ -42,7 +42,7 @@
       "js"
     ],
     "transform": {
-      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+      "\\.(ts|tsx)$": "ts-jest"
     },
     "testRegex": "(/__tests__/.*|.*.test)\\.(ts|tsx|js)$",
     "roots": [
