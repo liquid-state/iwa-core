@@ -33,7 +33,7 @@ export const browser = (url: string, external = false) => ({
   data: {
     url,
     settings: {
-      external,
+      launch_type: external ? 'external' : 'default',
     },
   },
 });
