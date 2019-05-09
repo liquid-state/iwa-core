@@ -40,13 +40,13 @@ describe('Launch domain messages', () => {
 
     it('Sets external false by default', () => {
       const message = browser('https://example.com');
-      expect(message.data.settings.external).toBeFalsy();
+      expect(message.data.settings.launch_type).toBe('default');
     });
 
     it('Sets external true when set', () => {
       const message = browser('https://example.com', true);
-      expect(message.data.settings.external).toBeDefined();
-      expect(message.data.settings.external).toBeTruthy();
+      expect(message.data.settings.launch_type).toBeDefined();
+      expect(message.data.settings.launch_type).toBe('external');
     });
   });
 });
