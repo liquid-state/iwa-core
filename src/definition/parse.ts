@@ -71,7 +71,11 @@ export default class DefinitionParser {
     return flow(
       (data: any) =>
         mapValues(data, (value, key) => {
+          if( typeof value.action_id === 'undefined') 
+            throw new Error(`Field "action_id" is missing from presentation "${key}"`);
           const definition = definitions[value.action_id];
+          if( typeof definition === 'undefined') 
+            throw new Error(`Action "${value.action_id}" is missing from presentation "${key}"`);
           return {
             id: key,
             action: {
