@@ -1,6 +1,6 @@
 import createApp from './app';
 
-export { default as createApp, App } from './app';
+export { default as createApp, App, Setting, resolveSettings } from './app';
 
 export { Communicator, createUrlCommunicator } from './communicator';
 
