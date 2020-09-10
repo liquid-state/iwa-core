@@ -1,6 +1,6 @@
 {
   "name": "@liquid-state/iwa-core",
-  "version": "1.8.2",
+  "version": "1.8.3",
   "description": "Core library for creating Liquid State Integrated Web Apps (IWAs)",
   "files": [
     "dist/",
