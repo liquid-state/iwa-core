@@ -16,7 +16,13 @@ interface Message<T> {
   data: T;
 }
 type Properties = {
-  [key: string]: string | boolean | number;
+  [key: string]: 
+    | string
+    | boolean
+    | number
+    | Array<string | boolean | number>
+    | { [key: string]: string | boolean | number }
+    | Array<{ [key: string]: string | boolean | number }>;
 };
 
 export const setAnalyticsEnabled = (
